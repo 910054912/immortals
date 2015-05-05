@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--Spring MVC组件(controller)的依赖注入必须在这里进行，spring-servlet(或重新指定)文件中-->
+    <!--这些组件Bean的作用范围是在DispatcherServlet范围内，而不是ServletContext范围内,与其他Servlet不共享-->
+    <!--同时，也可以将公用的组件(ValueObject或或公用服务组件)放到ServletContext中，即通过context-param参数将配置信息传递给监听器ContextLoaderListener-->
+    <!--让多个Servlet共享这些组件-->
+    <!--<context:annotation-config></context:annotation-config>-->
+    <context:component-scan base-package="com.king.controller"></context:component-scan>
+
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pc"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+</beans>
